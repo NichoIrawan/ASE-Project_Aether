@@ -83,9 +83,4 @@ public class DataPersistenceManager : MonoBehaviour
             ).OfType<IDataPersistence>();
         return new List<IDataPersistence>(dataPersistenceObjects);
     }
-
-    private void OnApplicationQuit()
-    {
-        SaveGame();
-    }
 }
