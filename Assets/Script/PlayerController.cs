@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerScript : MonoBehaviour
+public class PlayerScript : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private Rigidbody2D body;
     [SerializeField] private Animator animator;
@@ -25,29 +25,6 @@ public class PlayerScript : MonoBehaviour
         {
             FlipBody();
         }
-
-        //FlipBody();
-
-        //float xInput = Input.GetAxis("Horizontal");
-        //float yInput = Input.GetAxis("Vertical");
-
-        //if (Mathf.Abs(xInput) > 0)
-        //{
-        //    float xVelocity = xInput * speed;
-
-        //    body.linearVelocity = new Vector2(xVelocity, body.linearVelocity.y);
-        //    moveInput = new Vector2(xVelocity, body.linearVelocity.y);
-        //}
-
-        //if (Mathf.Abs(yInput) > 0)
-        //{
-        //    float yVelocity = yInput * speed;
-
-        //    body.linearVelocity = new Vector2(body.linearVelocity.x, yVelocity);
-        //    moveInput = new Vector2(body.linearVelocity.x, yVelocity);
-        //}
-
-        //animator.SetFloat("xVelocity", Mathf.Abs(moveInput.magnitude));
     }
 
     private void FixedUpdate()
@@ -86,5 +63,17 @@ public class PlayerScript : MonoBehaviour
         Vector3 localScale = animator.transform.localScale;
         localScale.x *= -1;
         animator.transform.localScale = localScale;
+    }
+
+    void IDataPersistence.LoadData(GameData data)
+    {
+        transform.position = data.position;
+        Debug.Log("Loaded player position: " + data.position);
+    }
+
+    void IDataPersistence.SaveData(ref GameData data)
+    {
+        data.position = transform.position;
+        Debug.Log("Saved player position: " + data.position);
     }
 }

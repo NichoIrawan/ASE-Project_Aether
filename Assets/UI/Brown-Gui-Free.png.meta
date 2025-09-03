@@ -1,0 +1,1105 @@
+fileFormatVersion: 2
+guid: b37fec22c41a5794880d6c42ed71674b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4235952727366562502
+    second: Brown-Gui-Free_0
+  - first:
+      213: -7863022853141477344
+    second: Brown-Gui-Free_1
+  - first:
+      213: 8159902807711587718
+    second: Brown-Gui-Free_2
+  - first:
+      213: -2872598060705244233
+    second: Brown-Gui-Free_3
+  - first:
+      213: -1689709817304553199
+    second: Brown-Gui-Free_4
+  - first:
+      213: -7720945795985250094
+    second: Brown-Gui-Free_5
+  - first:
+      213: -1096765811543422574
+    second: Brown-Gui-Free_6
+  - first:
+      213: -158391884105721158
+    second: Brown-Gui-Free_7
+  - first:
+      213: -8747861232058390165
+    second: Brown-Gui-Free_8
+  - first:
+      213: -4501196567546792630
+    second: Brown-Gui-Free_9
+  - first:
+      213: -3091030570298266190
+    second: Brown-Gui-Free_10
+  - first:
+      213: 4647163196819198352
+    second: Brown-Gui-Free_11
+  - first:
+      213: -8207855408547272694
+    second: Brown-Gui-Free_12
+  - first:
+      213: 3605755096247905523
+    second: Brown-Gui-Free_13
+  - first:
+      213: 2148393004828289174
+    second: Brown-Gui-Free_14
+  - first:
+      213: 7171599557396313761
+    second: Brown-Gui-Free_15
+  - first:
+      213: -1640638345821944661
+    second: Brown-Gui-Free_16
+  - first:
+      213: -5191584643038405498
+    second: Brown-Gui-Free_17
+  - first:
+      213: -1272561242564824675
+    second: Brown-Gui-Free_18
+  - first:
+      213: 917899914084148537
+    second: Brown-Gui-Free_19
+  - first:
+      213: 8140706630918287427
+    second: Brown-Gui-Free_20
+  - first:
+      213: 1239672542409561377
+    second: Brown-Gui-Free_21
+  - first:
+      213: 5440410361064990984
+    second: Brown-Gui-Free_22
+  - first:
+      213: -1957047656100858327
+    second: Brown-Gui-Free_23
+  - first:
+      213: 3184902264824379374
+    second: Brown-Gui-Free_24
+  - first:
+      213: -2505450864804960880
+    second: Brown-Gui-Free_25
+  - first:
+      213: 4458844283301555249
+    second: Brown-Gui-Free_26
+  - first:
+      213: 4184186248853992125
+    second: Brown-Gui-Free_27
+  - first:
+      213: -3227976083639745263
+    second: Brown-Gui-Free_28
+  - first:
+      213: 4946821497244567440
+    second: Brown-Gui-Free_29
+  - first:
+      213: -1535160994898902368
+    second: Brown-Gui-Free_30
+  - first:
+      213: 5386017135700910977
+    second: Brown-Gui-Free_31
+  - first:
+      213: -3333025553522616409
+    second: Brown-Gui-Free_32
+  - first:
+      213: 1898217687545538860
+    second: Brown-Gui-Free_33
+  - first:
+      213: -1970243802258219762
+    second: Brown-Gui-Free_34
+  - first:
+      213: -2020996305565961790
+    second: Brown-Gui-Free_35
+  - first:
+      213: -7372492120992894937
+    second: Brown-Gui-Free_36
+  - first:
+      213: 4187838211587129540
+    second: Brown-Gui-Free_37
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Brown-Gui-Free_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 238
+        width: 32
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c2f700009029ca30800000000000000
+      internalID: 4235952727366562502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_1
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 238
+        width: 32
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02849b9006ee0e290800000000000000
+      internalID: -7863022853141477344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_2
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 238
+        width: 32
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68d9c5fde5ccd3170800000000000000
+      internalID: 8159902807711587718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_3
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 205
+        width: 18
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bb1031984b7228d0800000000000000
+      internalID: -2872598060705244233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_4
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 205
+        width: 18
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1196216afd1fc88e0800000000000000
+      internalID: -1689709817304553199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_5
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 175
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d8e044b4b0b9d490800000000000000
+      internalID: -7720945795985250094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_6
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 175
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29949292e4187c0f0800000000000000
+      internalID: -1096765811543422574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_7
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 175
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abad29cab674dcdf0800000000000000
+      internalID: -158391884105721158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_8
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 205
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b69afbebe8a599680800000000000000
+      internalID: -8747861232058390165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_9
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 175
+        width: 66
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a457a27f1998881c0800000000000000
+      internalID: -4501196567546792630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_10
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bdaf73c2147a15d0800000000000000
+      internalID: -3091030570298266190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_11
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0915da74e4a0e7040800000000000000
+      internalID: 4647163196819198352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_12
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 130
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0865c53ef6d71e80800000000000000
+      internalID: -8207855408547272694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_13
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 129
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fc29eae7273a0230800000000000000
+      internalID: 3605755096247905523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_14
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 127
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69869b22e00a0dd10800000000000000
+      internalID: 2148393004828289174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_15
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 127
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a6b4f9fcc3a68360800000000000000
+      internalID: 7171599557396313761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_16
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 109
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba40660fd184b39e0800000000000000
+      internalID: -1640638345821944661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_17
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 109
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68c925af549c3f7b0800000000000000
+      internalID: -5191584643038405498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_18
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 110
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d917efdca44f65ee0800000000000000
+      internalID: -1272561242564824675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_19
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 109
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 935e85ecb190dbc00800000000000000
+      internalID: 917899914084148537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_20
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 105
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3403d8cac8999f070800000000000000
+      internalID: 8140706630918287427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_21
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 105
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1259028fb93343110800000000000000
+      internalID: 1239672542409561377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_22
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 63
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80922ab1668308b40800000000000000
+      internalID: 5440410361064990984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_23
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 63
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 926f891968b27d4e0800000000000000
+      internalID: -1957047656100858327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_24
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 67
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee7b13b4cbb033c20800000000000000
+      internalID: 3184902264824379374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_25
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 67
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 095ea1186b9da3dd0800000000000000
+      internalID: -2505450864804960880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_26
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 67
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13c68fe604ff0ed30800000000000000
+      internalID: 4458844283301555249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_27
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 67
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db2340d7937311a30800000000000000
+      internalID: 4184186248853992125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_28
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 70
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 115423fbadce333d0800000000000000
+      internalID: -3227976083639745263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_29
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 51
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 097478e31f3a6a440800000000000000
+      internalID: 4946821497244567440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_30
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 51
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a20402753302bae0800000000000000
+      internalID: -1535160994898902368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_31
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 51
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 183ae9f6c0afeba40800000000000000
+      internalID: 5386017135700910977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_32
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 49
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a71cfe0be6beb1d0800000000000000
+      internalID: -3333025553522616409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_33
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 53
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c29e38cfde2d75a10800000000000000
+      internalID: 1898217687545538860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_34
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 31
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0ddb7d53b948a4e0800000000000000
+      internalID: -1970243802258219762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_35
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 31
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c13d5a519af3f3e0800000000000000
+      internalID: -2020996305565961790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_36
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 32
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7203ad22a75afa990800000000000000
+      internalID: -7372492120992894937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown-Gui-Free_37
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 35
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c045725aa03e1a30800000000000000
+      internalID: 4187838211587129540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 7e45c55eff6a51d4d828976e37c9dc63
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Brown-Gui-Free_0: 4235952727366562502
+      Brown-Gui-Free_1: -7863022853141477344
+      Brown-Gui-Free_10: -3091030570298266190
+      Brown-Gui-Free_11: 4647163196819198352
+      Brown-Gui-Free_12: -8207855408547272694
+      Brown-Gui-Free_13: 3605755096247905523
+      Brown-Gui-Free_14: 2148393004828289174
+      Brown-Gui-Free_15: 7171599557396313761
+      Brown-Gui-Free_16: -1640638345821944661
+      Brown-Gui-Free_17: -5191584643038405498
+      Brown-Gui-Free_18: -1272561242564824675
+      Brown-Gui-Free_19: 917899914084148537
+      Brown-Gui-Free_2: 8159902807711587718
+      Brown-Gui-Free_20: 8140706630918287427
+      Brown-Gui-Free_21: 1239672542409561377
+      Brown-Gui-Free_22: 5440410361064990984
+      Brown-Gui-Free_23: -1957047656100858327
+      Brown-Gui-Free_24: 3184902264824379374
+      Brown-Gui-Free_25: -2505450864804960880
+      Brown-Gui-Free_26: 4458844283301555249
+      Brown-Gui-Free_27: 4184186248853992125
+      Brown-Gui-Free_28: -3227976083639745263
+      Brown-Gui-Free_29: 4946821497244567440
+      Brown-Gui-Free_3: -2872598060705244233
+      Brown-Gui-Free_30: -1535160994898902368
+      Brown-Gui-Free_31: 5386017135700910977
+      Brown-Gui-Free_32: -3333025553522616409
+      Brown-Gui-Free_33: 1898217687545538860
+      Brown-Gui-Free_34: -1970243802258219762
+      Brown-Gui-Free_35: -2020996305565961790
+      Brown-Gui-Free_36: -7372492120992894937
+      Brown-Gui-Free_37: 4187838211587129540
+      Brown-Gui-Free_4: -1689709817304553199
+      Brown-Gui-Free_5: -7720945795985250094
+      Brown-Gui-Free_6: -1096765811543422574
+      Brown-Gui-Free_7: -158391884105721158
+      Brown-Gui-Free_8: -8747861232058390165
+      Brown-Gui-Free_9: -4501196567546792630
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
