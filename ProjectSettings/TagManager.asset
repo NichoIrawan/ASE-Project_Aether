@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Item
+  - Chest
   layers:
   - Default
   - TransparentFX
@@ -46,6 +48,9 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 3695265099
+    locked: 0
+  - name: UI
+    uniqueID: 1930504821
     locked: 0
   m_RenderingLayers:
   - Default

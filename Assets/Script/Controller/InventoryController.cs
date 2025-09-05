@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,30 +7,62 @@ public class InventoryController : MonoBehaviour, IDataPersistence
 {
     private ItemDictionary itemDictionary;
 
+    // Event for inventory change
+    public static event Action OnInventoryChanged;
+
     public GameObject inventoryPanel;
     public GameObject inventoryPrefab;
-    public GameObject[] itemPrefabs;
+    public GameObject[] items;
     public int slotCount;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
         itemDictionary = FindFirstObjectByType<ItemDictionary>();
 
-        //for (int i = 0; i < slotCount; i++)
-        //{
-        //    // Create inventory slots
-        //    Slot slot = Instantiate(inventoryPrefab, inventoryPanel.transform).GetComponent<Slot>();
+        // Create inventory slots based on slot counts data
+        for (int i = 0; i < slotCount; i++)
+        {
+            Instantiate(inventoryPrefab, inventoryPanel.transform);
+        }
+    }
 
-        //    // Assign item to slot
-        //    if (i < itemPrefabs.Length)
-        //    {
-        //        GameObject item = Instantiate(itemPrefabs[i], slot.transform);
-        //        item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+    public GameObject GetItemInSlot(int slotIndex)
+    {
+        if (slotIndex >= 0 && slotIndex < slotCount)
+        {
+            Slot slot = inventoryPanel.transform.GetChild(slotIndex).GetComponent<Slot>();
+            return slot.currentItem;
+        }
+        return null;
+    }
 
-        //        slot.currentItem = item;
-        //    }
-        //}
+    public void SwapItem(Slot slotA, Slot slotB)
+    {
+        // Check if both slots are valid
+        if (slotA == null || slotB == null) return;
+
+        // Temp store slot A item
+        GameObject tempItem = slotA.currentItem;
+
+        // Move slot B item to slot A
+        slotA.currentItem = slotB.currentItem;
+        if (slotA.currentItem != null)
+        {
+            slotA.currentItem.transform.SetParent(slotA.transform);
+            slotA.currentItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+        }
+
+        // Move temp item to slot B
+        slotB.currentItem = tempItem;
+        if (slotB.currentItem != null)
+        {
+            slotB.currentItem.transform.SetParent(slotB.transform);
+            slotB.currentItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+        }
+
+        // Notify inventory change
+        OnInventoryChanged?.Invoke();
+        Debug.Log("Items swapped between slots.");
     }
 
     public bool AddInventoryItem(GameObject itemPrefab)
@@ -41,10 +74,12 @@ public class InventoryController : MonoBehaviour, IDataPersistence
             if (slot != null && slot.currentItem == null)
             {
                 // Initialize item prefab
-                GameObject newItem = Instantiate(itemPrefab, slotTransform);
+                GameObject newItem = Instantiate(itemPrefab, slot.transform);
                 newItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-                slot.currentItem = itemPrefab;
+                slot.currentItem = newItem;
 
+                // Notify inventory change
+                OnInventoryChanged?.Invoke();
                 return true;
             }
         }
@@ -53,7 +88,7 @@ public class InventoryController : MonoBehaviour, IDataPersistence
         return false;
     }
 
-    void IDataPersistence.LoadData(GameData data)
+    public void LoadData(GameData data)
     {
         // Load inventory data
         List<InventorySaveData> inventorySaveDatas = data.inventory;
@@ -61,13 +96,12 @@ public class InventoryController : MonoBehaviour, IDataPersistence
         // Clear existing inventory slots
         foreach (Transform child in inventoryPanel.transform)
         {
-            Destroy(child.gameObject);
-        }
-
-        // Create inventory slots based on slot counts data
-        for (int i = 0; i < slotCount; i++)
-        {
-            Instantiate(inventoryPrefab, inventoryPanel.transform);
+            Slot slot = child.GetComponent<Slot>();
+            if (slot != null && slot.currentItem != null)
+            {
+                Destroy(slot.currentItem);
+                slot.currentItem = null;
+            }
         }
 
         // Assign items to slots based on loaded data
@@ -88,10 +122,12 @@ public class InventoryController : MonoBehaviour, IDataPersistence
             }
         }
 
+        // Notify inventory change
+        OnInventoryChanged?.Invoke();
         Debug.Log($"Loaded {inventorySaveDatas.Count} item data.");
     }
 
-    void IDataPersistence.SaveData(ref GameData data)
+    public void SaveData(ref GameData data)
     {
         // Create Internal Inventory Data List
         List<InventorySaveData> invData = new List<InventorySaveData>();

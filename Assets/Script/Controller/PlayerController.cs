@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerScript : MonoBehaviour, IDataPersistence
 {
@@ -19,7 +20,7 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     // Update is called once per frame
     void Update()
     {
-        ProcessInput();
+        //ProcessInput();
         Animate();
         if (isFacingRight && moveInput.x < 0 || !isFacingRight && moveInput.x > 0)
         {
@@ -46,6 +47,15 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
         moveInput.y = moveY;
 
         moveInput.Normalize();
+    }
+
+    public void Move(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
+        if (moveInput != Vector2.zero)
+        {
+            lastMoveDirection = moveInput;
+        }
     }
 
     void Animate()
