@@ -31,6 +31,7 @@ public class InventoryController : MonoBehaviour, IDataPersistence
         if (slotIndex >= 0 && slotIndex < slotCount)
         {
             Slot slot = inventoryPanel.transform.GetChild(slotIndex).GetComponent<Slot>();
+            Debug.Log($"current item is {slot.currentItem}");
             return slot.currentItem;
         }
         return null;

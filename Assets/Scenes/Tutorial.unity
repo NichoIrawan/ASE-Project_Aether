@@ -1551,6 +1551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: data
+  useEncryption: 1
 --- !u!1 &512053045
 GameObject:
   m_ObjectHideFlags: 0
@@ -1991,9 +1992,9 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588713215}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
@@ -2115,7 +2116,7 @@ Transform:
   m_GameObject: {fileID: 614158643}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2561328, y: 3.1, z: -10}
+  m_LocalPosition: {x: 3.2500088, y: 3.1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4824,7 +4825,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.52}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -8313,7 +8314,6 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 175493480}
   - {fileID: 614158646}
   - {fileID: 579682100}
   - {fileID: 588713217}
@@ -8322,4 +8322,5 @@ SceneRoots:
   - {fileID: 168051620}
   - {fileID: 1603284263}
   - {fileID: 1781911161}
+  - {fileID: 175493480}
   - {fileID: 379807730}

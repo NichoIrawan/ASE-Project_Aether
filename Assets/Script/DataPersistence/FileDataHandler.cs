@@ -1,15 +1,20 @@
 using UnityEngine;
 using System.IO;
+using System;
 
 public class FileDataHandler
 {
     private string dataDirPath = "";
     private string dataFileName = "";
 
-    public FileDataHandler(string dataDirPath, string dataFileName)
+    private bool useEncrypted = false;
+    private readonly string encryptionCodeWord = "aether";
+
+    public FileDataHandler(string dataDirPath, string dataFileName, bool useEncrypted)
     {
         this.dataDirPath = dataDirPath;
         this.dataFileName = dataFileName;
+        this.useEncrypted = useEncrypted;
     }
 
     public GameData Load()
@@ -32,6 +37,11 @@ public class FileDataHandler
                     {
                         dataToLoad = reader.ReadToEnd();
                     }
+                }
+
+                if (useEncrypted)
+                {
+                    dataToLoad = EncryptDecrypt(dataToLoad);
                 }
 
                 // Convert the JSON string to a GameData object
@@ -63,6 +73,11 @@ public class FileDataHandler
             // Convert the game data to JSON format and format with indentation
             string dataToStore = JsonUtility.ToJson(data, true);
 
+            if (useEncrypted)
+            {
+                dataToStore = EncryptDecrypt(dataToStore);
+            }
+
             // Write the JSON string to the file
             // Use 'using' statements to ensure the file is properly closed after writing
             using (FileStream stream = new FileStream(fullPath, FileMode.Create))
@@ -77,5 +92,17 @@ public class FileDataHandler
         {
             Debug.LogError("Error saving data to file: " + fullPath + "\n" + e);
         }
+    }
+
+    private string EncryptDecrypt(string data)
+    {
+        string modifiedData = "";
+
+        for (int i = 0; i < data.Length; i++)
+        {
+            modifiedData += (char)(data[i] ^ encryptionCodeWord[i % encryptionCodeWord.Length]);
+        }
+
+        return modifiedData;
     }
 }

@@ -73,6 +73,7 @@ public class HotbarController : MonoBehaviour
 
                 // Equip the item in the selected hotbar slot
                 EquippedItem = inventoryController.GetItemInSlot(i);
+                Debug.Log($"Equipping {EquippedItem}");
             }
         }
     }

@@ -34,16 +34,17 @@ public class Chest : MonoBehaviour, IInteractable, IDataPersistence
         // Check if the player has the required item
         if (RequiredItem != null)
         {
-            var equippedItem = HotbarController.EquippedItem?.GetComponent<Item>();
+            var equippedItem = HotbarController.EquippedItem ? HotbarController.EquippedItem.GetComponent<Item>() : null;
             var requiredItem = RequiredItem ? RequiredItem.GetComponent<Item>() : null;
 
+            // If player has no item equipped
             if (!equippedItem || !requiredItem) 
             { 
                 Debug.Log("You need a " + requiredItem.itemName + " to open this chest.");
                 return; 
             }
 
-            // If not, do not open the chest
+            // If the equipped item is not the required item
             if (equippedItem.id != requiredItem.id)
             {
                 Debug.Log("You need a " + requiredItem.itemName + " to open this chest.");
