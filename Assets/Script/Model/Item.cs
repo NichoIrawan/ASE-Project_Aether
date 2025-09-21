@@ -23,6 +23,11 @@ public class Item : MonoBehaviour, IDataPersistence
         SetItemVisual(isCollected);
     }
 
+    public virtual void Use()
+    {
+        Debug.Log("Using item: " + itemName);
+    }
+
     private void SetItemVisual(bool isVisualActive)
     {
         gameObject.SetActive(!isVisualActive);

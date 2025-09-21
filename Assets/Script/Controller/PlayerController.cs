@@ -58,6 +58,17 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
         }
     }
 
+    public void UseItem(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (HotbarController.EquippedItem != null)
+            {
+                HotbarController.EquippedItem.GetComponent<Item>().Use();
+            }
+        }
+    }
+
     void Animate()
     {
         animator.SetFloat("xVelocity", moveInput.x);
