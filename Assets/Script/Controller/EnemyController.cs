@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +12,8 @@ public class EnemyController : MonoBehaviour
     public enum StateMachine
     {
         Patrol,
-        Pursue
+        Pursue,
+        Stunned
     }
 
     public StateMachine currentState;
@@ -24,6 +26,9 @@ public class EnemyController : MonoBehaviour
     public Node idleNode;
     public Node currentNode;
     public List<Node> path = new();
+
+    public bool isStunned = false;
+    private float stunTimer = 0f;
 
     private void Start()
     {
@@ -46,9 +51,15 @@ public class EnemyController : MonoBehaviour
             case StateMachine.Pursue:
                 Pursue();
                 break;
+            case StateMachine.Stunned:
+                break;
         }
 
-        if (hasLineOfSight && currentState != StateMachine.Pursue)
+        if (isStunned && currentState != StateMachine.Stunned)
+        {
+            currentState = StateMachine.Stunned;
+        }
+        else if (hasLineOfSight && currentState != StateMachine.Pursue)
         {
             currentState = StateMachine.Pursue;
             path.Clear();
@@ -58,6 +69,20 @@ public class EnemyController : MonoBehaviour
             delay = 2f;
             currentState = StateMachine.Patrol;
         }
+    }
+
+    public void Stunned(float duration)
+    {
+        isStunned = true;
+        stunTimer = duration;
+        body.linearVelocity = Vector2.zero;
+
+        while (stunTimer > 0)
+        {
+            stunTimer -= Time.deltaTime;
+        }
+
+        isStunned = false;
     }
 
     private void FixedUpdate()

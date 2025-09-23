@@ -6,6 +6,7 @@ public class Item : MonoBehaviour, IDataPersistence
 {
     public int id;
     public string itemName;
+    public float range = 0;
 
     private bool isCollected = false;
 

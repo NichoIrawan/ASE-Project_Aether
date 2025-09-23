@@ -7,6 +7,8 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     [SerializeField] private Animator animator;
     [SerializeField] private float speed = 5f;
 
+    public GameObject Aim;
+
     private Vector2 moveInput;
     private Vector2 lastMoveDirection;
     private bool isFacingRight = false;
@@ -31,6 +33,12 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     private void FixedUpdate()
     {
         body.linearVelocity = moveInput * speed;
+
+        if (moveInput != Vector2.zero)
+        {
+            Vector3 vector3 = Vector3.left * moveInput.x + Vector3.down * moveInput.y;
+            Aim.transform.rotation = Quaternion.LookRotation(Vector3.forward, vector3);
+        }
     }
 
     void ProcessInput()
@@ -55,6 +63,8 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
         if (moveInput != Vector2.zero)
         {
             lastMoveDirection = moveInput;
+            Vector3 vector3 = Vector3.left * moveInput.x + Vector3.down * moveInput.y;
+            Aim.transform.rotation = Quaternion.LookRotation(Vector3.forward, vector3);
         }
     }
 
@@ -64,7 +74,11 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
         {
             if (HotbarController.EquippedItem != null)
             {
-                HotbarController.EquippedItem.GetComponent<Item>().Use();
+                var item = HotbarController.EquippedItem.GetComponent<Item>();
+
+                Aim.transform.localScale = Vector3.one * 0.1f * item.range;
+                Aim.SetActive(true);
+                item.Use();
             }
         }
     }

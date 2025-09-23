@@ -233,8 +233,8 @@
                 {
                     "name": "",
                     "id": "111a1e6c-dbf5-45f6-a6a7-83803a47edf0",
-                    "path": "<Keyboard>/#(')",
-                    "interactions": "",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Use",
