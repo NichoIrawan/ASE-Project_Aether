@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -8,45 +9,68 @@ public class Flashlight : Item
     public float stunDuration = 3f;
     public float cooldown = 10f;
 
-    private float timer = 0f;
+    private float cooldownTimer = 0f;
 
     private bool isOn = false;
-    public GameObject flashlightLightPrefab;
+    public FlashlightSpotLight flashlightSpotLight;
 
     private void Awake()
     {
         base.range = 5f;
 
-        var light = flashlightLightPrefab.GetComponent<FlashlightSpotLight>();
-        light.range = base.range;
+        flashlightSpotLight.range = base.range;
+        flashlightSpotLight.angle = Quaternion.LookRotation(Vector3.forward, PlayerScript.lastMoveDirection);
+
+        flashlightSpotLight.gameObject.SetActive(false);
     }
 
     private void Update()
     {
-        if (timer > 0)
+        if (cooldownTimer > 0)
         {
-            timer -= Time.deltaTime;
+            cooldownTimer -= Time.deltaTime;
         }
     }
 
     public override void Use()
     {
-        if (timer > 0)
+        if (cooldownTimer > 0)
         {
-            Debug.Log("Flashlight is on cooldown for " + timer.ToString("F1") + " seconds.");
+            Debug.Log("Flashlight is on cooldown for " + cooldownTimer.ToString("F1") + " seconds.");
             return;
         }
-        else
+
+        if (isOn)
         {
-            timer = cooldown;
-            isOn = true;
+            // This prevents using the flashlight again while it's already on
+            return;
+        }
 
-            // Activate the flashlight light
+        // Start the coroutine to handle the flashlight's active state
+        StartCoroutine(FlashlightSequence());
+    }
 
+    private IEnumerator FlashlightSequence()
+    {
+        // Activate flashlight
+        flashlightSpotLight.angle = Quaternion.LookRotation(Vector3.forward, PlayerScript.lastMoveDirection);
 
-            // Stun enemies in range
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, range, enemyLayers);
-            foreach (var enemy in hitEnemies)
+        isOn = true;
+        cooldownTimer = cooldown;
+        flashlightSpotLight.gameObject.SetActive(true);
+        Debug.Log("Flashlight is ON");
+
+        // Stun enemy
+        Vector2 direction = PlayerScript.lastMoveDirection;
+        float coneAngle = 60f; 
+
+        Collider2D[] allEnemiesInRange = Physics2D.OverlapCircleAll(transform.position, range, enemyLayers);
+        foreach (var enemy in allEnemiesInRange)
+        {
+            Vector2 vectorToEnemy = (enemy.transform.position - transform.position).normalized;
+
+            // Check if the enemy is within the flashlight's cone
+            if (Vector2.Angle(direction, vectorToEnemy) < coneAngle / 2)
             {
                 var enemyComponent = enemy.GetComponent<EnemyController>();
                 if (enemyComponent != null)
@@ -54,9 +78,14 @@ public class Flashlight : Item
                     enemyComponent.Stunned(stunDuration);
                 }
             }
-
-            Debug.Log("Flashlight is now " + (isOn ? "ON" : "OFF"));
         }
 
+        // --- Wait Phase ---
+        yield return new WaitForSeconds(timeOn);
+
+        // --- Deactivation Phase ---
+        isOn = false;
+        flashlightSpotLight.gameObject.SetActive(false);
+        Debug.Log("Flashlight is OFF");
     }
 }

@@ -6,6 +6,7 @@ public class ItemDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
     Transform originalParent;
     CanvasGroup canvasGroup;
     InventoryController inventoryController;
+    ItemDictionary itemDictionary;
 
     public float MinDropDistance = 2f;
     public float MaxDropDistance = 3f;
@@ -15,6 +16,7 @@ public class ItemDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
     {
         canvasGroup = GetComponent<CanvasGroup>();
         inventoryController = FindFirstObjectByType<InventoryController>();
+        itemDictionary = FindAnyObjectByType<ItemDictionary>();
     }
     
     public void OnBeginDrag(PointerEventData eventData)
@@ -71,25 +73,34 @@ public class ItemDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
 
     void DropItem(Slot originalSlot)
     {
-        originalSlot.currentItem = null;
+        GameObject itemPrefab;
 
-        // Find Player 
-        Transform player = GameObject.FindGameObjectWithTag("Player")?.transform;
-
-        if (player == null)
+        if (originalSlot.currentItem.TryGetComponent<Item>(out Item item))
         {
-            Debug.LogError("Player not found in the scene.");
-            return;
+            itemPrefab = itemDictionary.getItemPrefab(item.id);
+
+            // Remove Item
+            inventoryController.RemoveInventoryItem(originalSlot);
+
+            // Find Player 
+            Transform player = GameObject.FindGameObjectWithTag("Player")?.transform;
+
+            if (player == null)
+            {
+                Debug.LogError("Player not found in the scene.");
+                return;
+            }
+
+            // Randomize Drop Position
+            Vector2 dropOffset = Random.insideUnitCircle.normalized * Random.Range(MinDropDistance, MaxDropDistance);
+            Vector2 dropPosition = (Vector2)player.position + dropOffset;
+
+            // Instantiate Dropped Item in the World
+            Instantiate(itemPrefab, dropPosition, Quaternion.identity);
+
+            // Destroy the item in the inventory
+            Destroy(gameObject);
         }
 
-        // Randomize Drop Position
-        Vector2 dropOffset = Random.insideUnitCircle.normalized * Random.Range(MinDropDistance, MaxDropDistance);
-        Vector2 dropPosition = (Vector2)player.position + dropOffset;
-
-        // Instantiate Dropped Item in the World
-        Instantiate(gameObject, dropPosition, Quaternion.identity);
-
-        // Destroy the item in the inventory
-        Destroy(gameObject);
     }
 }

@@ -28,7 +28,7 @@ public class PlayerItemCollector : MonoBehaviour, IDataPersistence
                     bool itemAdded = inventoryController.AddInventoryItem(itemPrefab);
 
                     if (itemAdded)
-                    {
+                    {   
                         item.PickUp();
                         item.gameObject.SetActive(false);
                         collectedItemIds.Add(item.id);

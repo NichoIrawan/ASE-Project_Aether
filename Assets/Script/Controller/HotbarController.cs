@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class HotbarController : MonoBehaviour
 {
     private InventoryController inventoryController;
+    [SerializeField]private GameObject hotbarItem;
 
     public static GameObject EquippedItem;
 
@@ -72,7 +73,18 @@ public class HotbarController : MonoBehaviour
                 selectedBorder.alpha = 1.0f;
 
                 // Equip the item in the selected hotbar slot
-                EquippedItem = inventoryController.GetItemInSlot(i);
+                var item = inventoryController.GetItemInSlot(i);
+
+                if (item != null)
+                {
+                    var equippedItem = hotbarItem.transform.GetChild(i);
+                    if (equippedItem != null)
+                    {
+                        EquippedItem = equippedItem.gameObject;
+                        equippedItem.gameObject.SetActive(true);
+                    }
+                }
+
                 Debug.Log($"Equipping {EquippedItem}");
             }
         }
@@ -94,6 +106,12 @@ public class HotbarController : MonoBehaviour
     {
         Debug.Log($"Loaded item data to hotbar.");
 
+        var items = hotbarItem.GetComponentsInChildren<Item>(true);
+        foreach(Item n in items)
+        {
+            Destroy(n.gameObject);
+        }
+
         for (int i = 0; i < slotCount; i++)
         {
             GameObject item = inventoryController.GetItemInSlot(i);
@@ -103,12 +121,22 @@ public class HotbarController : MonoBehaviour
                 // Set item image in hotbar slot
                 hotbarSlotImages[i].sprite = item.GetComponent<Image>().sprite;
                 hotbarSlotImages[i].enabled = true;
+
+                // Instantiate the item prefab as a child of the player (for usage)
+                Instantiate(item, hotbarItem.transform);
             }
             else
             {
                 // Clear hotbar slot if no item
                 hotbarSlotImages[i].sprite = null;
                 hotbarSlotImages[i].enabled = false;
+            }
+
+            items = hotbarItem.GetComponentsInChildren<Item>(true);
+            foreach (Item n in items)
+            {
+                n.GetComponentInParent<SpriteRenderer>().enabled = false;
+                n.GetComponentInParent<CircleCollider2D>().enabled = false;
             }
         }
 

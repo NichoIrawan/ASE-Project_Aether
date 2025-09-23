@@ -76,6 +76,7 @@ public class EnemyController : MonoBehaviour
         isStunned = true;
         stunTimer = duration;
         body.linearVelocity = Vector2.zero;
+        Debug.Log("Enemy stunned");
 
         while (stunTimer > 0)
         {

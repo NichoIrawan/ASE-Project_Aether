@@ -105,6 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec67aef905917b4bb0ce3b8d989bc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MinDropDistance: 2
+  MaxDropDistance: 3
 --- !u!114 &-7917350206661550182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   itemName: Master Key
+  range: 0
 --- !u!212 &8231756938627145157
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -64,6 +64,9 @@ public class Chest : MonoBehaviour, IInteractable, IDataPersistence
         IsOpened = true;
         if (ContainedItemPrefab != null)
         {
+            ContainedItemPrefab.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            ContainedItemPrefab.gameObject.GetComponent<CircleCollider2D>().enabled = true;
+
             Instantiate(ContainedItemPrefab, transform.position + Vector3.up, Quaternion.identity);
         }
     }

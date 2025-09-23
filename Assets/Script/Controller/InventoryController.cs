@@ -66,6 +66,15 @@ public class InventoryController : MonoBehaviour, IDataPersistence
         Debug.Log("Items swapped between slots.");
     }
 
+    public bool RemoveInventoryItem(Slot slot)
+    {
+        if (slot == null) return false;
+        
+        slot.currentItem = null;
+        OnInventoryChanged?.Invoke();
+        return true;
+    }
+
     public bool AddInventoryItem(GameObject itemPrefab)
     {
         foreach(Transform slotTransform in inventoryPanel.transform)

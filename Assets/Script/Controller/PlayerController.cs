@@ -9,8 +9,8 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
 
     public GameObject Aim;
 
+    public static Vector2 lastMoveDirection;
     private Vector2 moveInput;
-    private Vector2 lastMoveDirection;
     private bool isFacingRight = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -63,7 +63,7 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
         if (moveInput != Vector2.zero)
         {
             lastMoveDirection = moveInput;
-            Vector3 vector3 = Vector3.left * moveInput.x + Vector3.down * moveInput.y;
+            Vector3 vector3 = Vector3.left * lastMoveDirection.x + Vector3.down * lastMoveDirection.y;
             Aim.transform.rotation = Quaternion.LookRotation(Vector3.forward, vector3);
         }
     }
