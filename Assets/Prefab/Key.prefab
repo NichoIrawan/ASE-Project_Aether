@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8231756938627145157}
   - component: {fileID: -2507788560464472772}
   - component: {fileID: -4860927520010271743}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Key
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4730928390475403166}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -233,5 +233,5 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: 0, y: -0.23}
+  m_Radius: 0.37

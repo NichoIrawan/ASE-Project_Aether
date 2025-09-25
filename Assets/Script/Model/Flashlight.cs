@@ -64,21 +64,21 @@ public class Flashlight : Item
         Vector2 direction = PlayerScript.lastMoveDirection;
         float coneAngle = 60f; 
 
-        Collider2D[] allEnemiesInRange = Physics2D.OverlapCircleAll(transform.position, range, enemyLayers);
-        foreach (var enemy in allEnemiesInRange)
-        {
-            Vector2 vectorToEnemy = (enemy.transform.position - transform.position).normalized;
+        //Collider2D[] allEnemiesInRange = Physics2D.OverlapCircleAll(transform.position, range, enemyLayers);
+        //foreach (var enemy in allEnemiesInRange)
+        //{
+        //    Vector2 vectorToEnemy = (enemy.transform.position - transform.position).normalized;
 
-            // Check if the enemy is within the flashlight's cone
-            if (Vector2.Angle(direction, vectorToEnemy) < coneAngle / 2)
-            {
-                var enemyComponent = enemy.GetComponent<EnemyController>();
-                if (enemyComponent != null)
-                {
-                    enemyComponent.Stunned(stunDuration);
-                }
-            }
-        }
+        //    // Check if the enemy is within the flashlight's cone
+        //    if (Vector2.Angle(direction, vectorToEnemy) < coneAngle / 2)
+        //    {
+        //        var enemyComponent = enemy.GetComponent<EnemyController>();
+        //        if (enemyComponent != null)
+        //        {
+        //            enemyComponent.Stunned(stunDuration);
+        //        }
+        //    }
+        //}
 
         // --- Wait Phase ---
         yield return new WaitForSeconds(timeOn);

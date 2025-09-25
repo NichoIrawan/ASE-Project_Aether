@@ -23,6 +23,8 @@ public class EnemyController : MonoBehaviour
     private float range = 3f;
     private float delay = 0;
 
+    public LayerMask layerMask;
+
     public Node idleNode;
     public Node currentNode;
     public List<Node> path = new();
@@ -38,6 +40,22 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        if (isStunned)
+        {
+            stunTimer -= Time.deltaTime;
+            if (stunTimer <= 0)
+            {
+                isStunned = false;
+                currentState = StateMachine.Patrol;
+            }
+            else
+            {
+                // Keep the enemy stunned
+                body.linearVelocity = Vector2.zero;
+                return;
+            }
+        }
+
         if (isFacingRight && body.linearVelocity.x < 0 || !isFacingRight && body.linearVelocity.x > 0)
         {
             FlipBody();
@@ -77,18 +95,11 @@ public class EnemyController : MonoBehaviour
         stunTimer = duration;
         body.linearVelocity = Vector2.zero;
         Debug.Log("Enemy stunned");
-
-        while (stunTimer > 0)
-        {
-            stunTimer -= Time.deltaTime;
-        }
-
-        isStunned = false;
     }
 
     private void FixedUpdate()
     {
-        RaycastHit2D ray = Physics2D.Raycast(transform.position, player.transform.position - transform.position, range);
+        RaycastHit2D ray = Physics2D.Raycast(transform.position, player.transform.position - transform.position, range, layerMask);
 
         if (ray.collider != null)
         {

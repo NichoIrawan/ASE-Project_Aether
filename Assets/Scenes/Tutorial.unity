@@ -2188,7 +2188,7 @@ GameObject:
   - component: {fileID: 579682098}
   - component: {fileID: 579682101}
   - component: {fileID: 579682102}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2405,7 +2405,7 @@ GameObject:
   - component: {fileID: 588322295}
   - component: {fileID: 588322294}
   - component: {fileID: 588322298}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Chest
   m_TagString: Chest
   m_Icon: {fileID: 0}
@@ -2582,7 +2582,7 @@ GameObject:
   - component: {fileID: 588713217}
   - component: {fileID: 588713216}
   - component: {fileID: 588713218}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2650,6 +2650,9 @@ MonoBehaviour:
   animator: {fileID: 1112391036}
   speed: 2
   currentState: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 9
   idleNode: {fileID: 1832548061}
   currentNode: {fileID: 1511000934}
   path: []
@@ -3823,7 +3826,7 @@ GameObject:
   m_Component:
   - component: {fileID: 787352440}
   - component: {fileID: 787352441}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Collider
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -4189,7 +4192,7 @@ GameObject:
   - component: {fileID: 863869704}
   - component: {fileID: 863869703}
   - component: {fileID: 863869702}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sprite
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -6049,9 +6052,9 @@ GameObject:
   - component: {fileID: 1112391033}
   - component: {fileID: 1112391035}
   - component: {fileID: 1112391036}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Sprite
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6265,9 +6268,9 @@ GameObject:
   - component: {fileID: 1214133852}
   - component: {fileID: 1214133853}
   - component: {fileID: 1214133854}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6789,6 +6792,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flashlight
       objectReference: {fileID: 0}
+    - target: {fileID: 6004367859040100373, guid: 96d3dce8c7338644e9f2ff3684af29b8, type: 3}
+      propertyPath: enemyLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8716079071315051840, guid: 96d3dce8c7338644e9f2ff3684af29b8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7245,7 +7252,7 @@ GameObject:
   - component: {fileID: 1423237481}
   - component: {fileID: 1423237483}
   - component: {fileID: 1423237482}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Waypoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8594,29 +8601,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 512053046}
     m_Modifications:
-    - target: {fileID: -4860927520010271743, guid: 2f0062cb216707f41a6b27f935ed679d, type: 3}
-      propertyPath: m_Radius
-      value: 0.37
-      objectReference: {fileID: 0}
-    - target: {fileID: -4860927520010271743, guid: 2f0062cb216707f41a6b27f935ed679d, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -4860927520010271743, guid: 2f0062cb216707f41a6b27f935ed679d, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.23
-      objectReference: {fileID: 0}
     - target: {fileID: 4730928390475403166, guid: 2f0062cb216707f41a6b27f935ed679d, type: 3}
       propertyPath: m_Name
       value: Key
-      objectReference: {fileID: 0}
-    - target: {fileID: 4730928390475403166, guid: 2f0062cb216707f41a6b27f935ed679d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8231756938627145157, guid: 2f0062cb216707f41a6b27f935ed679d, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8716079071315051840, guid: 2f0062cb216707f41a6b27f935ed679d, type: 3}
       propertyPath: m_Pivot.x
