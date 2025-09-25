@@ -16,6 +16,23 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     private Vector2 moveInput;
     private bool isFacingRight = false;
 
+    private void OnEnable()
+    {
+        if (DataPersistenceManager.instance != null)
+        {
+            DataPersistenceManager.instance.RegisterDataPersistenceObject(this);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (DataPersistenceManager.instance != null)
+        {
+            DataPersistenceManager.instance.SaveGameCache();
+            DataPersistenceManager.instance.UnregisterDataPersistenceObject(this);
+        }
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

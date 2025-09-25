@@ -22,6 +22,23 @@ public class Chest : MonoBehaviour, IInteractable, IDataPersistence
         ChestID = System.Guid.NewGuid().ToString();
     }
 
+    private void OnEnable()
+    {
+        if (DataPersistenceManager.instance != null)
+        {
+            DataPersistenceManager.instance.RegisterDataPersistenceObject(this);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (DataPersistenceManager.instance != null)
+        {
+            DataPersistenceManager.instance.SaveGameCache();
+            DataPersistenceManager.instance.UnregisterDataPersistenceObject(this);
+        }
+    }
+
     public bool CanInteract()
     {
         return !IsOpened;

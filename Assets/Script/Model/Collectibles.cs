@@ -8,6 +8,23 @@ public class Collectibles : Item, IDataPersistence
         base.id = System.Guid.NewGuid().ToString();
     }
 
+    private void OnEnable()
+    {
+        if (DataPersistenceManager.instance != null)
+        {
+            DataPersistenceManager.instance.RegisterDataPersistenceObject(this);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (DataPersistenceManager.instance != null)
+        {
+            DataPersistenceManager.instance.SaveGameCache();
+            DataPersistenceManager.instance.UnregisterDataPersistenceObject(this);
+        }
+    }
+
     public override void PickUp()
     {
         GameEventManager.Instance.CandyCollected();

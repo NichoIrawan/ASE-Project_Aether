@@ -10,6 +10,23 @@ public class CandyCollectedText : MonoBehaviour, IDataPersistence
     private int candyCollected = 0;
     private TextMeshProUGUI text;
 
+    private void OnEnable()
+    {
+        if (DataPersistenceManager.instance != null)
+        {
+            DataPersistenceManager.instance.RegisterDataPersistenceObject(this);
+        }
+    }
+
+    private void OnDisable() 
+    {
+        if (DataPersistenceManager.instance != null)
+        {
+            DataPersistenceManager.instance.SaveGameCache();
+            DataPersistenceManager.instance.UnregisterDataPersistenceObject(this);
+        }
+    }
+
     private void Awake()
     {
         text = GetComponent<TextMeshProUGUI>();

@@ -63,6 +63,14 @@ public class DataPersistenceManager : MonoBehaviour
         gameData = new GameData();
     }
 
+    public void SaveGameCache()
+    {
+        foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
+        {
+            dataPersistenceObj.SaveData(ref gameData);
+        }
+    }
+
     public void SaveGame()
     {
         if (gameData == null)
@@ -71,11 +79,8 @@ public class DataPersistenceManager : MonoBehaviour
             return;
         }
 
-        // Pass data to gameData
-        foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
-        {
-            dataPersistenceObj.SaveData(ref gameData);
-        }
+        // Ensure the data is up to date
+        SaveGameCache();
 
         // Save to a file using data handler
         dataHandler.Save(gameData);
@@ -100,6 +105,7 @@ public class DataPersistenceManager : MonoBehaviour
         }
     }
 
+    // List automatically all class that implement IDataPersistence (Called when scene loaded)
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {
         IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsByType<MonoBehaviour>
@@ -107,5 +113,19 @@ public class DataPersistenceManager : MonoBehaviour
                 FindObjectsSortMode.None
             ).OfType<IDataPersistence>();
         return new List<IDataPersistence>(dataPersistenceObjects);
+    }
+
+    // Method to manually register object to memory (For dynamic state of scene)
+    public void RegisterDataPersistenceObject(IDataPersistence obj)
+    {
+        if (!dataPersistenceObjects.Contains(obj))
+        {
+            dataPersistenceObjects.Add(obj);
+        }
+    }
+
+    public void UnregisterDataPersistenceObject(IDataPersistence obj)
+    {
+        dataPersistenceObjects.Remove(obj);
     }
 }

@@ -8,6 +8,23 @@ public class Item : MonoBehaviour, IDataPersistence
 
     protected bool isCollected = false;
 
+    private void OnEnable()
+    {
+        if (DataPersistenceManager.instance != null)
+        {
+            DataPersistenceManager.instance.RegisterDataPersistenceObject(this);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (DataPersistenceManager.instance != null)
+        {
+            DataPersistenceManager.instance.SaveGameCache();
+            DataPersistenceManager.instance.UnregisterDataPersistenceObject(this);
+        }
+    }
+
     public virtual void PickUp()
     {
         Sprite itemIcon = GetComponent<Image>().sprite;

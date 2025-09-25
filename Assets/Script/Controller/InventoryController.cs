@@ -15,6 +15,23 @@ public class InventoryController : MonoBehaviour, IDataPersistence
     public GameObject[] items;
     public int slotCount;
 
+    private void OnEnable()
+    {
+        if (DataPersistenceManager.instance != null)
+        {
+            DataPersistenceManager.instance.RegisterDataPersistenceObject(this);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (DataPersistenceManager.instance != null)
+        {
+            DataPersistenceManager.instance.SaveGameCache();
+            DataPersistenceManager.instance.UnregisterDataPersistenceObject(this);
+        }
+    }
+
     private void Awake()
     {
         itemDictionary = FindFirstObjectByType<ItemDictionary>();
