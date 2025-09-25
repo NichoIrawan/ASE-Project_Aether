@@ -13,7 +13,6 @@ public class FlashlightTriggerController : MonoBehaviour
 
     void Update()
     {
-        // Ensures the collider radius always matches the public 'range' variable
         if (detectionCollider.radius != range)
         {
             detectionCollider.radius = range;
@@ -34,7 +33,7 @@ public class FlashlightTriggerController : MonoBehaviour
 
         if (Vector2.Angle(forwardDirection, directionToTarget) < coneAngle / 2)
         {
-            // 3. Get the component and apply the stun
+            // Stun enemies
             var enemyComponent = other.GetComponentInParent<EnemyController>();
             if (enemyComponent != null)
             {

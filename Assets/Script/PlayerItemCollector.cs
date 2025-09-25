@@ -1,17 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerItemCollector : MonoBehaviour, IDataPersistence
+public class PlayerItemCollector : MonoBehaviour
 {
     private InventoryController inventoryController;
     private ItemDictionary itemDictionary;
-    private List<int> collectedItemIds;
 
     private void Awake()
     {
         inventoryController = FindFirstObjectByType<InventoryController>();
         itemDictionary = FindFirstObjectByType<ItemDictionary>();
-        collectedItemIds = new List<int>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -31,21 +29,18 @@ public class PlayerItemCollector : MonoBehaviour, IDataPersistence
                     {   
                         item.PickUp();
                         item.gameObject.SetActive(false);
-                        collectedItemIds.Add(item.id);
                     }
                 }
-
             }
         }
-    }
-
-    void IDataPersistence.LoadData(GameData data)
-    {
-        //collectedItemIds = data.collectedItemId;
-    }
-
-    void IDataPersistence.SaveData(ref GameData data)
-    {
-        //data.collectedItemId = collectedItemIds;
+        else if (collision.CompareTag("Collectibles"))
+        {
+            Collectibles collectibles = collision.GetComponent<Collectibles>();
+            if (collectibles != null)
+            {
+                collectibles.PickUp();
+                collectibles.gameObject.SetActive(false);
+            }
+        }
     }
 }

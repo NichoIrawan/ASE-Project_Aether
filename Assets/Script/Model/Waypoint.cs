@@ -8,6 +8,7 @@ public class Waypoint : MonoBehaviour, IInteractable
     public bool isEnabled;
 
     public GameObject RequiredItem;
+    public int RequiredCandy = 0;
 
     public bool CanInteract()
     {
@@ -37,6 +38,13 @@ public class Waypoint : MonoBehaviour, IInteractable
                 Debug.Log("You need a " + requiredItem.itemName + " to use this waypoint.");
                 return;
             }
+        }
+
+        // Check if the required candy fulfilled
+        if (PlayerScript.CollectedCandy < RequiredCandy)
+        {
+            Debug.Log("You need a total of " + RequiredCandy + " candy to use this waypoint.");
+            return;
         }
 
         // Save to cache

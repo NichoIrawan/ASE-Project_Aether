@@ -8,6 +8,7 @@ public class Flashlight : Item
     public float timeOn = 5f;
     public float stunDuration = 3f;
     public float cooldown = 10f;
+    public float range = 5f;
 
     private float cooldownTimer = 0f;
 
@@ -16,9 +17,7 @@ public class Flashlight : Item
 
     private void Awake()
     {
-        base.range = 5f;
-
-        flashlightSpotLight.range = base.range;
+        flashlightSpotLight.range = range;
         flashlightSpotLight.angle = Quaternion.LookRotation(Vector3.forward, PlayerScript.lastMoveDirection);
 
         flashlightSpotLight.gameObject.SetActive(false);
@@ -40,13 +39,8 @@ public class Flashlight : Item
             return;
         }
 
-        if (isOn)
-        {
-            // This prevents using the flashlight again while it's already on
-            return;
-        }
-
-        // Start the coroutine to handle the flashlight's active state
+        if (isOn) return;
+        
         StartCoroutine(FlashlightSequence());
     }
 
@@ -60,30 +54,9 @@ public class Flashlight : Item
         flashlightSpotLight.gameObject.SetActive(true);
         Debug.Log("Flashlight is ON");
 
-        // Stun enemy
-        Vector2 direction = PlayerScript.lastMoveDirection;
-        float coneAngle = 60f; 
-
-        //Collider2D[] allEnemiesInRange = Physics2D.OverlapCircleAll(transform.position, range, enemyLayers);
-        //foreach (var enemy in allEnemiesInRange)
-        //{
-        //    Vector2 vectorToEnemy = (enemy.transform.position - transform.position).normalized;
-
-        //    // Check if the enemy is within the flashlight's cone
-        //    if (Vector2.Angle(direction, vectorToEnemy) < coneAngle / 2)
-        //    {
-        //        var enemyComponent = enemy.GetComponent<EnemyController>();
-        //        if (enemyComponent != null)
-        //        {
-        //            enemyComponent.Stunned(stunDuration);
-        //        }
-        //    }
-        //}
-
-        // --- Wait Phase ---
         yield return new WaitForSeconds(timeOn);
 
-        // --- Deactivation Phase ---
+        // Deactivate after timeOn run out
         isOn = false;
         flashlightSpotLight.gameObject.SetActive(false);
         Debug.Log("Flashlight is OFF");

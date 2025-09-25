@@ -5,18 +5,18 @@ using UnityEngine;
 public class ItemDictionary : MonoBehaviour
 {
     public List<Item> itemPrefabs;
-    private Dictionary<int, GameObject> itemDictionary;
+    private Dictionary<string, GameObject> itemDictionary;
 
     private void Awake()
     {
-        itemDictionary = new Dictionary<int, GameObject>();
+        itemDictionary = new();
 
         // Auto Increment
         for (int i = 0; i< itemPrefabs.Count; i++)
         {
             if (itemPrefabs[i] != null)
             {
-                itemPrefabs[i].id = i + 1;
+                itemPrefabs[i].id = (i + 1).ToString();
             }
         }
 
@@ -26,7 +26,7 @@ public class ItemDictionary : MonoBehaviour
         }
     }
 
-    public GameObject getItemPrefab(int id)
+    public GameObject getItemPrefab(string id)
     {
         // Search item in dictionary
         itemDictionary.TryGetValue(id, out GameObject prefab);

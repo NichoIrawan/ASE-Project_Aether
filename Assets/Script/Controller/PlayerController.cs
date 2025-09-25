@@ -1,8 +1,11 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerScript : MonoBehaviour, IDataPersistence
 {
+    public static int CollectedCandy = 0;
+
     [SerializeField] private Rigidbody2D body;
     [SerializeField] private Animator animator;
     [SerializeField] private float speed = 5f;
@@ -75,9 +78,6 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
             if (HotbarController.EquippedItem != null)
             {
                 var item = HotbarController.EquippedItem.GetComponent<Item>();
-
-                Aim.transform.localScale = Vector3.one * 0.1f * item.range;
-                Aim.SetActive(true);
                 item.Use();
             }
         }
@@ -102,13 +102,16 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
 
     void IDataPersistence.LoadData(GameData data)
     {
-        transform.position = data.position;
-        Debug.Log("Loaded player position: " + data.position);
+        transform.position = data.playerPosition;
+        Debug.Log("Loaded player position: " + data.playerPosition);
+
+        CollectedCandy =  data.collectedCollectibles.Where(pair => pair.Value == true).Count();
+        Debug.Log($"Loaded collected candy: {CollectedCandy}");
     }
 
     void IDataPersistence.SaveData(ref GameData data)
     {
-        data.position = transform.position;
-        Debug.Log("Saved player position: " + data.position);
+        data.playerPosition = transform.position;
+        Debug.Log("Saved player position: " + data.playerPosition);
     }
 }

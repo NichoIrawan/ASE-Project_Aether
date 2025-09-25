@@ -1,14 +1,12 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Item : MonoBehaviour, IDataPersistence
 {
-    public int id;
+    public string id;
     public string itemName;
-    public float range = 0;
 
-    private bool isCollected = false;
+    protected bool isCollected = false;
 
     public virtual void PickUp()
     {
@@ -29,12 +27,12 @@ public class Item : MonoBehaviour, IDataPersistence
         Debug.Log("Using item: " + itemName);
     }
 
-    private void SetItemVisual(bool isVisualActive)
+    protected void SetItemVisual(bool isVisualActive)
     {
         gameObject.SetActive(!isVisualActive);
     }
 
-    public void LoadData(GameData data)
+    public virtual void LoadData(GameData data)
     {
         if (data.collectedItem.TryGetValue(id, out bool isCollected) && isCollected)
         {
@@ -42,7 +40,7 @@ public class Item : MonoBehaviour, IDataPersistence
         }
     }
 
-    public void SaveData(ref GameData data)
+    public virtual void SaveData(ref GameData data)
     {
         if (data.collectedItem.ContainsKey(id))
         {

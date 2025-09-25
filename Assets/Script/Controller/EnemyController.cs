@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IDataPersistence
 {
+    [SerializeField] private string id;
     [SerializeField] private GameObject player;
     [SerializeField] private Rigidbody2D body;
     [SerializeField] private Animator animator;
-    [SerializeField] private float speed = 2f;
+    [SerializeField] private float speed = 3f;
 
     public enum StateMachine
     {
@@ -32,6 +33,12 @@ public class EnemyController : MonoBehaviour
     public bool isStunned = false;
     private float stunTimer = 0f;
 
+    [ContextMenu("Generate guid")]
+    private void GenerateGuid()
+    {
+        id = Guid.NewGuid().ToString();
+    }
+
     private void Start()
     {
         currentState = StateMachine.Patrol;
@@ -50,7 +57,6 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                // Keep the enemy stunned
                 body.linearVelocity = Vector2.zero;
                 return;
             }
@@ -77,12 +83,12 @@ public class EnemyController : MonoBehaviour
         {
             currentState = StateMachine.Stunned;
         }
-        else if (hasLineOfSight && currentState != StateMachine.Pursue)
+        else if (!isStunned && hasLineOfSight && currentState != StateMachine.Pursue)
         {
             currentState = StateMachine.Pursue;
             path.Clear();
         }
-        else if (!hasLineOfSight && currentState != StateMachine.Patrol)
+        else if (!isStunned && !hasLineOfSight && currentState != StateMachine.Patrol)
         {
             delay = 2f;
             currentState = StateMachine.Patrol;
@@ -99,6 +105,8 @@ public class EnemyController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isStunned) return;
+
         RaycastHit2D ray = Physics2D.Raycast(transform.position, player.transform.position - transform.position, range, layerMask);
 
         if (ray.collider != null)
@@ -166,8 +174,8 @@ public class EnemyController : MonoBehaviour
     private void CreatePath(Node start, Node end)
     {
         if (path == null || path.Count == 0)
-            path = AStarManager.instance.GeneratePath(start, end);
         {
+            path = AStarManager.instance.GeneratePath(start, end);
         }
     }
 
@@ -191,5 +199,28 @@ public class EnemyController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
+    }
+
+    public void LoadData(GameData data)
+    {
+        if (data.enemies.TryGetValue(id, out var enemyData))
+        {
+            transform.position = enemyData.position;
+            currentState = enemyData.currentState;
+            stunTimer = enemyData.stunTimer;
+
+            currentNode = AStarManager.instance.GetNearestNode(transform.position);
+        }
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        if (data.enemies.ContainsKey(id))
+        {
+            data.enemies.Remove(id);
+        }
+
+        EnemyData enemyData = new(transform.position, currentState, stunTimer);
+        data.enemies.Add(id, enemyData);
     }
 }

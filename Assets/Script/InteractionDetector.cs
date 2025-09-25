@@ -7,8 +7,6 @@ public class InteractionDetector : MonoBehaviour
     private IInteractable InteractableInRange = null;
     public GameObject InteractIcon;
 
-    private List<string> interactedItem;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
