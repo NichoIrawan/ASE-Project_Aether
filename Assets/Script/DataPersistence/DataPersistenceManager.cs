@@ -10,7 +10,7 @@ public class DataPersistenceManager : MonoBehaviour
     [SerializeField] private string fileName;
     [SerializeField] private bool useEncryption;
 
-    private GameData gameData;
+    public GameData gameData;
     private List<IDataPersistence> dataPersistenceObjects;
     private FileDataHandler dataHandler;
 
@@ -20,11 +20,15 @@ public class DataPersistenceManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.LogError("Found more than one Data Persistence Manager in the scene.");
+            Debug.LogError("Found more than one Data Persistence Manager in the scene. Destoying the new one");
+            Destroy(this.gameObject);
+            return;
         }
         instance = this;
+        DontDestroyOnLoad(this.gameObject);
 
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
+        dataPersistenceObjects = FindAllDataPersistenceObjects();
     }
 
     private void Start()
@@ -46,8 +50,9 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("OnSceneLoaded called");
         dataPersistenceObjects = FindAllDataPersistenceObjects();
+        LoadGame();
+        Debug.Log("OnSceneLoaded called");
     }
 
     public void OnSceneUnloaded(Scene scene)
@@ -55,6 +60,17 @@ public class DataPersistenceManager : MonoBehaviour
         Debug.Log("OnSceneUnloaded called");
 
         // Save to cache
+        SaveGameCache();
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveGame();
+    }
+
+    public bool HasGameData()
+    {
+        return gameData != null;
     }
 
     public void NewGame()
@@ -65,7 +81,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void SaveGameCache()
     {
-        foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
+        foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects.ToList())
         {
             dataPersistenceObj.SaveData(ref gameData);
         }
@@ -79,6 +95,9 @@ public class DataPersistenceManager : MonoBehaviour
             return;
         }
 
+        // Add Active Scene
+        this.gameData.currentSceneName = SceneManager.GetActiveScene().name;
+
         // Ensure the data is up to date
         SaveGameCache();
 
@@ -91,15 +110,15 @@ public class DataPersistenceManager : MonoBehaviour
         // Load from a file using data handler
         gameData = dataHandler.Load();
 
-        // if no new game data, create new game data
+        // if no new game data, Don't load
         if (gameData == null)
         {
             Debug.Log("No game data found. Creating new game data.");
-            NewGame();
+            return;
         }
 
         // Pass loaded data to all other scripts that need it
-        foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
+        foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects.ToList())
         {
             dataPersistenceObj.LoadData(gameData);
         }

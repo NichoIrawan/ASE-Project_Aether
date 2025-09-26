@@ -28,6 +28,7 @@ public class Collectibles : Item, IDataPersistence
     public override void PickUp()
     {
         GameEventManager.Instance.CandyCollected();
+        PlayerScript.CollectedCandy++;
         base.PickUp();
     }
 

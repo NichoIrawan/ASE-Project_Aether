@@ -4,6 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
+    public string currentSceneName;
     public Vector3 playerPosition;
     public List<InventorySaveData> inventory;
     public SerilizableDictionary<string, EnemyData> enemies;
@@ -13,6 +14,7 @@ public class GameData
 
     public GameData()
     {
+        currentSceneName = "Tutorial";
         playerPosition = new Vector3(-0.5f, 4.3f, 0f);
         enemies = new();
         inventory = new();
