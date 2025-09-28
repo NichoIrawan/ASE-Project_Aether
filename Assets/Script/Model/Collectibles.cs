@@ -33,6 +33,7 @@ public class Collectibles : MonoBehaviour, IDataPersistence
     public void PickUp()
     {
         GameEventManager.Instance.CandyCollected();
+        SoundEffectManager.PlaySound("Collect");
         PlayerScript.CollectedCandy++;
 
         Sprite itemIcon = GetComponent<Image>().sprite;

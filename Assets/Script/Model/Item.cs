@@ -19,6 +19,9 @@ public class Item : MonoBehaviour
 
         // Disable the item in the scene
         isCollected = true;
+
+        // Play sound effect
+        SoundEffectManager.PlaySound("Collect");
         SetItemVisual(!isCollected);
     }
 

@@ -74,6 +74,7 @@ public class EnemyController : MonoBehaviour, IDataPersistence
             else
             {
                 body.linearVelocity = Vector2.zero;
+                StopSound();
                 return;
             }
         }
@@ -87,9 +88,11 @@ public class EnemyController : MonoBehaviour, IDataPersistence
         {
             case StateMachine.Patrol:
                 Patrol();
+                StopSound();
                 break;
             case StateMachine.Pursue:
                 Pursue();
+                StartSound();
                 break;
             case StateMachine.Stunned:
                 break;
@@ -238,5 +241,20 @@ public class EnemyController : MonoBehaviour, IDataPersistence
 
         EnemyData enemyData = new(transform.position, currentState, stunTimer);
         data.enemies.Add(id, enemyData);
+    }
+
+    private void StartSound()
+    {
+        InvokeRepeating(nameof(playSound), 0f, 5f);
+    }
+
+    private void StopSound()
+    {
+        CancelInvoke(nameof(playSound));
+    }
+
+    private void playSound()
+    {
+        SoundEffectManager.PlaySound("Enemy");
     }
 }

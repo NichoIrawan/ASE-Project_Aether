@@ -79,6 +79,7 @@ public class Chest : MonoBehaviour, IInteractable, IDataPersistence
     private void OpenChest()
     {
         IsOpened = true;
+        SoundEffectManager.PlaySound("Chest");
         if (ContainedItemPrefab != null)
         {
             ContainedItemPrefab.gameObject.GetComponent<SpriteRenderer>().enabled = true;
