@@ -15,31 +15,27 @@ public class InventoryController : MonoBehaviour, IDataPersistence
     public GameObject[] items;
     public int slotCount;
 
-    private void OnEnable()
-    {
-        if (DataPersistenceManager.instance != null)
-        {
-            DataPersistenceManager.instance.RegisterDataPersistenceObject(this);
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (DataPersistenceManager.instance != null)
-        {
-            DataPersistenceManager.instance.SaveGameCache();
-            DataPersistenceManager.instance.UnregisterDataPersistenceObject(this);
-        }
-    }
-
     private void Awake()
     {
+        if (DataPersistenceManager.instance != null)
+        {
+            DataPersistenceManager.instance.Register(this);
+        }
+        
         itemDictionary = FindFirstObjectByType<ItemDictionary>();
 
         // Create inventory slots based on slot counts data
         for (int i = 0; i < slotCount; i++)
         {
             Instantiate(inventoryPrefab, inventoryPanel.transform);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (DataPersistenceManager.instance != null)
+        {
+            DataPersistenceManager.instance.Unregister(this);
         }
     }
 

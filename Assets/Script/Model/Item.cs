@@ -1,29 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Item : MonoBehaviour, IDataPersistence
+public class Item : MonoBehaviour
 {
     public string id;
     public string itemName;
 
-    protected bool isCollected = false;
-
-    private void OnEnable()
-    {
-        if (DataPersistenceManager.instance != null)
-        {
-            DataPersistenceManager.instance.RegisterDataPersistenceObject(this);
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (DataPersistenceManager.instance != null)
-        {
-            DataPersistenceManager.instance.SaveGameCache();
-            DataPersistenceManager.instance.UnregisterDataPersistenceObject(this);
-        }
-    }
+    public bool isCollected {  get; protected set; }
 
     public virtual void PickUp()
     {
@@ -36,7 +19,7 @@ public class Item : MonoBehaviour, IDataPersistence
 
         // Disable the item in the scene
         isCollected = true;
-        SetItemVisual(isCollected);
+        SetItemVisual(!isCollected);
     }
 
     public virtual void Use()
@@ -46,23 +29,6 @@ public class Item : MonoBehaviour, IDataPersistence
 
     protected void SetItemVisual(bool isVisualActive)
     {
-        gameObject.SetActive(!isVisualActive);
-    }
-
-    public virtual void LoadData(GameData data)
-    {
-        if (data.collectedItem.TryGetValue(id, out bool isCollected) && isCollected)
-        {
-            SetItemVisual(isCollected);
-        }
-    }
-
-    public virtual void SaveData(ref GameData data)
-    {
-        if (data.collectedItem.ContainsKey(id))
-        {
-            data.collectedItem.Remove(id);
-        }
-        data.collectedItem.Add(id, isCollected);
+        gameObject.SetActive(isVisualActive);
     }
 }

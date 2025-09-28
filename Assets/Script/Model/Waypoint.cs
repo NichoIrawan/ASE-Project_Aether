@@ -48,7 +48,7 @@ public class Waypoint : MonoBehaviour, IInteractable
         }
 
         // Save to cache
-
+        DataPersistenceManager.instance.SaveGameCache();
 
         // Load the scene
         if (SceneToGo != null)

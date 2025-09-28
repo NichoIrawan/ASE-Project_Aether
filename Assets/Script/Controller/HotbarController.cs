@@ -24,7 +24,7 @@ public class HotbarController : MonoBehaviour
 
         foreach(Transform child in HotbarPanel.transform)
         {
-            Destroy(child.gameObject);
+            DestroyImmediate(child.gameObject, true);
         }
 
         for (int i = 0; i < slotCount; i++)

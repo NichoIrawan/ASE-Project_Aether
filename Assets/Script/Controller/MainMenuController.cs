@@ -11,6 +11,8 @@ public class MainMenuController : MonoBehaviour
 
     private void Start()
     {
+        DataPersistenceManager.instance.LoadGame();
+
         if (!DataPersistenceManager.instance.HasGameData())
         {
             ContinueButton.interactable = false;
@@ -21,14 +23,24 @@ public class MainMenuController : MonoBehaviour
     {
         DisableButton();
         DataPersistenceManager.instance.LoadGame();
-        SceneManager.LoadSceneAsync(DataPersistenceManager.instance.gameData.currentSceneName);
+
+        var scene = DataPersistenceManager.instance.gameData.currentSceneName;
+
+        if (scene.Equals("MainMenu"))
+        {
+            OnNewGameClick();
+        }
+        else
+        {
+            SceneManager.LoadSceneAsync(scene);
+        }
     }
 
     public void OnNewGameClick()
     {
         DisableButton();
         DataPersistenceManager.instance.NewGame();
-        SceneManager.LoadSceneAsync("Tutorial");
+        SceneManager.LoadSceneAsync("LevelScene");
     }
 
     public void OnExitClick()

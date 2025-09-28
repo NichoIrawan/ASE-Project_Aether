@@ -1,46 +1,67 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Collectibles : Item, IDataPersistence
+public class Collectibles : MonoBehaviour, IDataPersistence
 {
+    public string id;
+    public string itemName;
+
+    public bool isCollected { get; private set; }
+
+    private void Awake()
+    {
+        if (DataPersistenceManager.instance != null)
+        {
+            DataPersistenceManager.instance.Register(this);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (DataPersistenceManager.instance != null)
+        {
+            DataPersistenceManager.instance.Unregister(this);
+        }
+    }
+
     [ContextMenu("Generate guid")]
     private void GenerateGuid()
     {
-        base.id = System.Guid.NewGuid().ToString();
+        id = System.Guid.NewGuid().ToString();
     }
 
-    private void OnEnable()
-    {
-        if (DataPersistenceManager.instance != null)
-        {
-            DataPersistenceManager.instance.RegisterDataPersistenceObject(this);
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (DataPersistenceManager.instance != null)
-        {
-            DataPersistenceManager.instance.SaveGameCache();
-            DataPersistenceManager.instance.UnregisterDataPersistenceObject(this);
-        }
-    }
-
-    public override void PickUp()
+    public void PickUp()
     {
         GameEventManager.Instance.CandyCollected();
         PlayerScript.CollectedCandy++;
-        base.PickUp();
+
+        Sprite itemIcon = GetComponent<Image>().sprite;
+
+        if (ItemPickupUIController.Instance != null)
+        {
+            ItemPickupUIController.Instance.ShowItemPickup(itemName, itemIcon);
+        }
+
+        // Disable the item in the scene
+        isCollected = true;
+        SetItemVisual(!isCollected);
     }
 
-    public override void LoadData(GameData data)
+    protected void SetItemVisual(bool isVisualActive)
     {
-        if (data.collectedCollectibles.TryGetValue(id, out bool isCollected) && isCollected)
+        gameObject.SetActive(isVisualActive);
+    }
+
+    public void LoadData(GameData data)
+    {
+        if (data.collectedCollectibles.TryGetValue(id, out bool isCollect) && isCollect)
         {
-            SetItemVisual(isCollected);
+            isCollected = isCollect;
+            SetItemVisual(!isCollected);
         }
     }
 
-    public override void SaveData(ref GameData data)
+    public void SaveData(ref GameData data)
     {
         if (data.collectedCollectibles.ContainsKey(id))
         {

@@ -16,33 +16,24 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     private Vector2 moveInput;
     private bool isFacingRight = false;
 
-    private void OnEnable()
+    private void Awake()
     {
         if (DataPersistenceManager.instance != null)
         {
-            DataPersistenceManager.instance.RegisterDataPersistenceObject(this);
+            DataPersistenceManager.instance.Register(this);
         }
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         if (DataPersistenceManager.instance != null)
         {
-            DataPersistenceManager.instance.SaveGameCache();
-            DataPersistenceManager.instance.UnregisterDataPersistenceObject(this);
+            DataPersistenceManager.instance.Unregister(this);
         }
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        //ProcessInput();
         Animate();
         if (isFacingRight && moveInput.x < 0 || !isFacingRight && moveInput.x > 0)
         {
@@ -59,22 +50,6 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
             Vector3 vector3 = Vector3.left * moveInput.x + Vector3.down * moveInput.y;
             Aim.transform.rotation = Quaternion.LookRotation(Vector3.forward, vector3);
         }
-    }
-
-    void ProcessInput()
-    {
-        float moveX = Input.GetAxis("Horizontal");
-        float moveY = Input.GetAxis("Vertical");
-
-        if ((moveX == 0 && moveY == 0) && (moveInput.x != 0 || moveInput.y != 0))
-        {
-            lastMoveDirection = moveInput;
-        }
-
-        moveInput.x = moveX;
-        moveInput.y = moveY;
-
-        moveInput.Normalize();
     }
 
     public void Move(InputAction.CallbackContext context)

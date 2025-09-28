@@ -5,11 +5,22 @@ using UnityEngine;
 public class ItemDictionary : MonoBehaviour
 {
     public List<Item> itemPrefabs;
-    private Dictionary<string, GameObject> itemDictionary;
+    [SerializeField]private Dictionary<string, GameObject> itemDictionary = new();
+
+    public static ItemDictionary Instance { get; private set; }
 
     private void Awake()
     {
-        itemDictionary = new();
+        if (Instance != null)
+        {
+            Debug.Log("More than one instance of ItemDictionary found. Destroying the new one");
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
 
         // Auto Increment
         for (int i = 0; i< itemPrefabs.Count; i++)

@@ -39,20 +39,19 @@ public class EnemyController : MonoBehaviour, IDataPersistence
         id = Guid.NewGuid().ToString();
     }
 
-    private void OnEnable()
+    private void Awake()
     {
         if (DataPersistenceManager.instance != null)
         {
-            DataPersistenceManager.instance.RegisterDataPersistenceObject(this);
+            DataPersistenceManager.instance.Register(this);
         }
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         if (DataPersistenceManager.instance != null)
         {
-            DataPersistenceManager.instance.SaveGameCache();
-            DataPersistenceManager.instance.UnregisterDataPersistenceObject(this);
+            DataPersistenceManager.instance.Unregister(this);
         }
     }
 

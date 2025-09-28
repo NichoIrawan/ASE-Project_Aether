@@ -3,14 +3,7 @@ using UnityEngine;
 
 public class PlayerItemCollector : MonoBehaviour
 {
-    private InventoryController inventoryController;
-    private ItemDictionary itemDictionary;
-
-    private void Awake()
-    {
-        inventoryController = FindFirstObjectByType<InventoryController>();
-        itemDictionary = FindFirstObjectByType<ItemDictionary>();
-    }
+    [SerializeField]private InventoryController inventoryController;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,7 +12,7 @@ public class PlayerItemCollector : MonoBehaviour
             Item item = collision.GetComponent<Item>();
             if (item != null)
             {
-                GameObject itemPrefab = itemDictionary.getItemPrefab(item.id);
+                GameObject itemPrefab = ItemDictionary.Instance.getItemPrefab(item.id);
 
                 if (itemPrefab != null)
                 {
@@ -28,7 +21,6 @@ public class PlayerItemCollector : MonoBehaviour
                     if (itemAdded)
                     {   
                         item.PickUp();
-                        item.gameObject.SetActive(false);
                     }
                 }
             }
@@ -39,7 +31,6 @@ public class PlayerItemCollector : MonoBehaviour
             if (collectibles != null)
             {
                 collectibles.PickUp();
-                collectibles.gameObject.SetActive(false);
             }
         }
     }

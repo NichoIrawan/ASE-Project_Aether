@@ -10,6 +10,7 @@ public class Chest : MonoBehaviour, IInteractable, IDataPersistence
 
     public GameObject RequiredItem; // Item required to open the chest, can be null
 
+
     [ContextMenu("Open Chest")]
     public void TestOpenChest()
     {
@@ -22,20 +23,19 @@ public class Chest : MonoBehaviour, IInteractable, IDataPersistence
         ChestID = System.Guid.NewGuid().ToString();
     }
 
-    private void OnEnable()
+    private void Awake()
     {
         if (DataPersistenceManager.instance != null)
         {
-            DataPersistenceManager.instance.RegisterDataPersistenceObject(this);
+            DataPersistenceManager.instance.Register(this);
         }
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         if (DataPersistenceManager.instance != null)
         {
-            DataPersistenceManager.instance.SaveGameCache();
-            DataPersistenceManager.instance.UnregisterDataPersistenceObject(this);
+            DataPersistenceManager.instance.Unregister(this);
         }
     }
 

@@ -11,7 +11,7 @@ public class DataPersistenceManager : MonoBehaviour
     [SerializeField] private bool useEncryption;
 
     public GameData gameData;
-    private List<IDataPersistence> dataPersistenceObjects;
+    private List<IDataPersistence> dataPersistenceObjects = new();
     private FileDataHandler dataHandler;
 
     public static DataPersistenceManager instance { get; private set; }
@@ -20,7 +20,7 @@ public class DataPersistenceManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.LogError("Found more than one Data Persistence Manager in the scene. Destoying the new one");
+            Debug.Log("Found more than one Data Persistence Manager in the scene. Destoying the new one");
             Destroy(this.gameObject);
             return;
         }
@@ -28,44 +28,28 @@ public class DataPersistenceManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
-        dataPersistenceObjects = FindAllDataPersistenceObjects();
-    }
-
-    private void Start()
-    {
-        LoadGame();
     }
 
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
-        SceneManager.sceneUnloaded += OnSceneUnloaded;
     }
     
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-        SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         dataPersistenceObjects = FindAllDataPersistenceObjects();
-        LoadGame();
+        PassGameData();
         Debug.Log("OnSceneLoaded called");
-    }
-
-    public void OnSceneUnloaded(Scene scene)
-    {
-        Debug.Log("OnSceneUnloaded called");
-
-        // Save to cache
-        SaveGameCache();
     }
 
     private void OnApplicationQuit()
     {
-        SaveGame();
+        if (!SceneManager.GetActiveScene().name.Equals("MainMenu")) SaveGame();
     }
 
     public bool HasGameData()
@@ -77,6 +61,9 @@ public class DataPersistenceManager : MonoBehaviour
     {
         // Create new game data
         gameData = new GameData();
+
+        // Make a new empty file
+        dataHandler.Save(gameData);
     }
 
     public void SaveGameCache()
@@ -118,6 +105,11 @@ public class DataPersistenceManager : MonoBehaviour
         }
 
         // Pass loaded data to all other scripts that need it
+        PassGameData();
+    }
+
+    public void PassGameData()
+    {
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects.ToList())
         {
             dataPersistenceObj.LoadData(gameData);
@@ -134,17 +126,16 @@ public class DataPersistenceManager : MonoBehaviour
         return new List<IDataPersistence>(dataPersistenceObjects);
     }
 
-    // Method to manually register object to memory (For dynamic state of scene)
-    public void RegisterDataPersistenceObject(IDataPersistence obj)
+    public void Register(IDataPersistence dataPersistenceObj)
     {
-        if (!dataPersistenceObjects.Contains(obj))
+        if (!this.dataPersistenceObjects.Contains(dataPersistenceObj))
         {
-            dataPersistenceObjects.Add(obj);
+            this.dataPersistenceObjects.Add(dataPersistenceObj);
         }
     }
 
-    public void UnregisterDataPersistenceObject(IDataPersistence obj)
+    public void Unregister(IDataPersistence dataPersistenceObj)
     {
-        dataPersistenceObjects.Remove(obj);
+        this.dataPersistenceObjects.Remove(dataPersistenceObj);
     }
 }

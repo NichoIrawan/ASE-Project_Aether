@@ -14,12 +14,12 @@ public class GameData
 
     public GameData()
     {
-        currentSceneName = "Tutorial";
-        playerPosition = new Vector3(-0.5f, 4.3f, 0f);
-        enemies = new();
-        inventory = new();
-        collectedItem = new();
-        collectedCollectibles = new();
-        interactedItem = new();
+        currentSceneName = "LevelScene";
+        playerPosition = new Vector3(0f, 0f, 0f);
+        enemies = new SerilizableDictionary<string, EnemyData>();
+        inventory = new List<InventorySaveData>();
+        collectedItem = new SerilizableDictionary<string, bool>();
+        collectedCollectibles = new SerilizableDictionary<string, bool>();
+        interactedItem = new SerilizableDictionary<string, bool>();
     }
 }
